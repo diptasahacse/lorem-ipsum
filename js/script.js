@@ -27,10 +27,10 @@ const showFromApi = (data, times) => {
         document.getElementById('output').innerText = displayText;
     }
 }
-const getText = (times) => {
-    fetch("../data/data.json")
-        .then(res => res.json())
-        .then(data => showFromApi(data, times))
+const getText = async(times) => {
+    let jsonData = await fetch("../data/data.json");
+    let data = await jsonData.json();
+    showFromApi(data, times)
 
 }
 document.getElementById('enter').addEventListener('click', () => {
